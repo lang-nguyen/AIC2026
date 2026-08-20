@@ -55,7 +55,7 @@ class AutoQueryRequest(BaseModel):
     """Automatic mode query."""
     query_text: str = Field(..., description="Raw query text from competition")
     session_id: Optional[str] = None
-    max_results: int = Field(default=20, ge=1, le=100)
+    max_results: int = Field(default=20, ge=1, le=2000)
 
 
 class NearbyFramesRequest(BaseModel):

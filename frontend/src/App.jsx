@@ -44,11 +44,11 @@ const api = {
     return res.json()
   },
 
-  async automaticQuery(query) {
+  async automaticQuery(query, limit = 100) {
     const res = await fetch(`${API_BASE}/api/v1/automatic/query`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query_text: query, max_results: 100 }),
+      body: JSON.stringify({ query_text: query, max_results: limit }),
     })
     return res.json()
   },
@@ -227,7 +227,7 @@ export default function App() {
     
     setLoading(true)
     try {
-      const data = await api.automaticQuery(msg)
+      const data = await api.automaticQuery(msg, resultLimit)
       setResults(data.results || [])
       setSearchInfo({ total: data.results?.length || 0 })
       setChatMessages(m => m.slice(0, -1).concat([{ role: 'bot', text: `Đã tìm thấy ${data.results?.length || 0} kết quả! Hình ảnh đã được hiển thị trên màn hình.` }]))
@@ -236,7 +236,7 @@ export default function App() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [resultLimit])
 
   // ─── Handle form submit ─────────────────────────────
   const handleFormSubmit = (e) => {
