@@ -1,0 +1,25 @@
+# Environments
+backend/venv/
+backend/.env
+
+# Node
+frontend/node_modules/
+
+# Data & Output (Do not commit large files)
+backend/data/
+*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
