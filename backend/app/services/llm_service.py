@@ -92,16 +92,17 @@ Output (JSON array of enhanced English queries):"""
 
         prompt = f"""You are parsing a multimedia retrieval competition query.
 Analyze the query and extract structured search information.
+CRITICAL INSTRUCTION: All extracted queries (text_queries, object_queries, place_queries, temporal_events) MUST be translated to English, because the database only understands English. Only ocr_queries should be kept in the original language if it's looking for exact text on screen.
 
 Query: {query_text}
 
 Return a JSON object with:
 {{
     "text_queries": ["list of English text queries for CLIP search"],
-    "ocr_queries": ["text appearing in the image/video, if mentioned"],
-    "object_queries": ["specific objects mentioned"],
-    "place_queries": ["locations/places mentioned"],
-    "temporal_events": ["event1 description", "event2 description"] or null,
+    "ocr_queries": ["exact text appearing on screen, keep original language"],
+    "object_queries": ["list of specific objects in English"],
+    "place_queries": ["list of locations/places in English"],
+    "temporal_events": ["event1 in English", "event2 in English"] or null,
     "search_mode": "hybrid" | "temporal" | "ocr",
     "answer_type": "frame" | "text" | "count" | null,
     "is_temporal": true/false

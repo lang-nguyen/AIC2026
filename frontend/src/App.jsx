@@ -421,7 +421,7 @@ export default function App() {
             <div className="sidebar-section">
               <button
                 className="btn btn-primary btn-block"
-                onClick={handleSearchAll}
+                onClick={handleSearch}
                 disabled={loading || (activeTab !== 'temporal' && queries.length === 0)}
               >
                 {loading ? (
