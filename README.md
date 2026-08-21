@@ -3,7 +3,7 @@
 ## 1. Requirements
 - Python 3.10+
 - Node.js 18+
-- Docker & Docker Desktop
+- Docker
 
 ## 2. Database Setup (Docker)
 Run the following command to start Elasticsearch in the background:
