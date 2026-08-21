@@ -121,7 +121,7 @@ async def main():
     
     if docs_to_insert:
         success, _ = await async_bulk(client, docs_to_insert, chunk_size=1000)
-        logger.info(f"✅ Successfully inserted {success} documents into Elasticsearch!")
+        logger.info(f"Successfully inserted {success} documents into Elasticsearch!")
     else:
         logger.info("No documents to insert.")
 
